@@ -5,7 +5,7 @@ from utils import attach
 
 
 @pytest.fixture(scope='function')
-def browser(request):
+def browser():
     options = Options()
     options.set_capability("browserName", "chrome")
     options.set_capability("browserVersion", "128.0")
