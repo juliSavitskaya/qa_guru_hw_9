@@ -7,9 +7,9 @@ def add_screenshot(browser):
     allure.attach(body=png, name='screenshot', attachment_type=AttachmentType.PNG, extension='.png')
 
 
-def add_logs(driver):
+def add_logs(browser):
     try:
-        logs = driver.get_log('browser')
+        logs = browser.get_log('browser')
         log_text = "\n".join(str(log) for log in logs)
     except Exception as e:
         log_text = f"Логи недоступны: {e}"
