@@ -7,11 +7,16 @@ from utils import attach
 @pytest.fixture(scope='function')
 def browser():
     options = Options()
-    options.set_capability("browserName", "chrome")
-    options.set_capability("browserVersion", "128.0")
-    options.set_capability("selenoid:options", {"enableVNC": True, "enableVideo": True})
-    options.set_capability('goog:loggingPrefs', {'browser': 'ALL'})
-
+    selenoid_capabilities = {
+        "browserName": "chrome",
+        "browserVersion": "128.0",
+        "selenoid:options": {
+            "enableVNC": True,
+            "enableVideo": True,
+            "enableLog": True
+        }
+    }
+    options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",
         options=options
