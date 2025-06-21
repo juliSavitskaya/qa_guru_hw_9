@@ -10,6 +10,7 @@ def browser(request):
     options.set_capability("browserName", "chrome")
     options.set_capability("browserVersion", "128.0")
     options.set_capability("selenoid:options", {"enableVNC": True, "enableVideo": True})
+    options.set_capability('goog:loggingPrefs', {'browser': 'ALL'})
 
     driver = webdriver.Remote(
         command_executor="https://user1:1234@selenoid.autotests.cloud/wd/hub",

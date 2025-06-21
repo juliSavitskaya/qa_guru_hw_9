@@ -11,9 +11,11 @@ def add_logs(browser):
     try:
         logs = browser.get_log('browser')
         log_text = "\n".join(str(log) for log in logs)
-        allure.attach(log_text, 'browser_logs', AttachmentType.TEXT)
     except Exception as e:
-        allure.attach(str(e), 'browser_logs', AttachmentType.TEXT)
+        log_text = f"Логи недоступны: {e}"
+    import allure
+    from allure_commons.types import AttachmentType
+    allure.attach(log_text, 'browser_logs', AttachmentType.TEXT)
 
 
 def add_html(browser):
