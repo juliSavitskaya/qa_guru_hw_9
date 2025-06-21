@@ -14,7 +14,8 @@ def browser():
             "enableVNC": True,
             "enableVideo": True,
             "enableLog": True
-        }
+        },
+        "goog:loggingPrefs": {"browser": "ALL"}
     }
     options.capabilities.update(selenoid_capabilities)
     driver = webdriver.Remote(
