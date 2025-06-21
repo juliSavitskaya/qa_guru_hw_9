@@ -9,7 +9,7 @@ def add_screenshot(browser):
 
 def add_logs(browser):
     try:
-        logs = browser.get_log('browser')
+        logs = browser.execute("getLog", {"type": 'browser'})["value"]
         log_text = "\n".join(str(log) for log in logs)
     except Exception as e:
         log_text = f"Логи недоступны: {e}"
